@@ -89,7 +89,7 @@ cd docker && docker build . -t bevfusion
 We can then run the docker with the following command:
 
 ```bash
-nvidia-docker run -it -v `pwd`/../data:/dataset --shm-size 16g bevfusion /bin/bash
+docker run -d --runtime=nvidia -it -v `pwd`/../data:/dataset -v `pwd`:/home --shm-size 16g bevfusion
 ```
 
 We recommend the users to run data preparation (instructions are available in the next section) outside the docker if possible. Note that the dataset directory should be an absolute path. Within the docker, please run the following command to clone our repo and install custom CUDA extensions:
